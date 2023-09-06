@@ -9,8 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class StorageDataSourceImpl implements StorageDataSource {
   StorageDataSourceImpl();
 
-  final String favoriteKey = 'FAVORITE';
-  final String historyKey = 'HISTORY';
+  static const String favoriteKey = 'FAVORITE';
+  static const String historyKey = 'HISTORY';
 
   @override
   Future<RepositoryModel> getFavoriteRepositories() async {
@@ -30,7 +30,7 @@ class StorageDataSourceImpl implements StorageDataSource {
   Future<void> addRepositoryToFavorite(
       Repository repository, RepositoryModel oldRepositoryModel) async {
     final prefs = await SharedPreferences.getInstance();
-    oldRepositoryModel.repositories.add(
+    oldRepositoryModel.repositories.insert(0,
         Repository(id: repository.id, name: repository.name, isFavorite: true));
     prefs.setString(favoriteKey, json.encode(oldRepositoryModel));
   }
@@ -49,7 +49,7 @@ class StorageDataSourceImpl implements StorageDataSource {
   Future<void> addItemToSearchHistory(
       String item, SearchHistoryModel oldSearchHistoryModel) async {
     final prefs = await SharedPreferences.getInstance();
-    oldSearchHistoryModel.history.add(SearchHistoryItem(name: item));
+    oldSearchHistoryModel.history.insert(0, SearchHistoryItem(name: item));
     prefs.setString(historyKey, json.encode(oldSearchHistoryModel));
   }
 

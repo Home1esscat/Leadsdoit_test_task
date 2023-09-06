@@ -23,15 +23,4 @@ class FavoriteScreenCubit extends Cubit<FavoriteScreenState> {
     var updatedRecentRepositories = await storageRepo.getFavoriteRepositories();
     emit(FavoriteScreenLoadedState(repositories: updatedRecentRepositories));
   }
-
-//  @override
-//   Future<RepositoryModel> getRecentRepositories() {
-//     return _storageDataSource.getRecentRepositories();
-//   }
-
-//   @override
-//   Future<void> addRecentRepository(
-//       Repository repository, RepositoryModel oldRepositoryModel) {
-//     return _storageDataSource.addRecentRepository(repository, oldRepositoryModel);
-//   }
 }

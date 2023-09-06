@@ -17,7 +17,13 @@ class SearchScreenHistoryCubit extends Cubit<SearchScreenHistoryState> {
 
   Future<void> addItemToSearchHistory(String item) async {
     var oldSearchHistory = await storageRepo.getSearchHistory();
-    storageRepo.addItemToSearchHistory(
-        item: item, oldSearchHistoryModel: oldSearchHistory);
+    if (oldSearchHistory.history.length > 4) {
+      oldSearchHistory.history.removeAt(4);
+      storageRepo.addItemToSearchHistory(
+          item: item, oldSearchHistoryModel: oldSearchHistory);
+    } else {
+      storageRepo.addItemToSearchHistory(
+          item: item, oldSearchHistoryModel: oldSearchHistory);
+    }
   }
 }
