@@ -9,9 +9,9 @@ class StringResources {
       'You have no favorites. \n Click on star while searching to add first favorite';
   static const String emptySearchHistory =
       'You have empty history. \n Click on search to start journey!';
-
   static const String emptySearchMessage =
       'Nothing was find for your search. \n Please check the spelling';
   static const String errorSearchMessage =
       'Something went wrong while search. \n Please check youy internet connection';
+  static const String unknownErrorMessage = 'Shit happens. \n I\'m so sorry 😢';
 }

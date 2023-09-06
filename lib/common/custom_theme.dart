@@ -44,4 +44,10 @@ class CustomTextStyles {
       fontFamily: ralewayFont,
       fontSize: 16,
       fontWeight: FontWeight.w600);
+
+  static const TextStyle splashScreenTextStyle = TextStyle(
+      color: CustomColors.splashScreenTextColor,
+      fontFamily: ralewayFont,
+      fontSize: 16,
+      fontWeight: FontWeight.w600);
 }

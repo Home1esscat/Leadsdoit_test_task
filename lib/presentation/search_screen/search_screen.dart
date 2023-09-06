@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:github_test_app/common/app_routes.dart';
 import 'package:github_test_app/common/custom_colors.dart';
 import 'package:github_test_app/presentation/search_screen/search_screen_appbar.dart';
 import 'package:github_test_app/common/string_resources.dart';
@@ -31,8 +32,8 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     super.initState();
 
-    searchScreenCubit = context.read<SearchScreenCubit>();
-    searchScreenHistoryCubit = context.read<SearchScreenHistoryCubit>();
+    searchScreenCubit = SearchScreenCubit();
+    searchScreenHistoryCubit = SearchScreenHistoryCubit();
 
     focusNode.addListener(onFocusChange);
 
@@ -42,57 +43,67 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: SearchScreenAppBar(
-          onFavoritePressed: () => onFavoritePressed(),
-          title: StringResources.searchPageTitle),
-      body: Container(
-        color: Colors.white,
-        width: double.infinity,
-        height: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildSearchBar(),
-              BlocConsumer<SearchScreenCubit, SearchScreenState>(
-                builder: (context, state) {
-                  if (state is SearchScreenLoadedState) {
-                    if (state.repositories.repositories.isNotEmpty) {
-                      return buildFullRepositoryState(state);
-                    } else {
-                      return buildEmptyRepositoryState(context);
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SearchScreenCubit>(
+          create: (context) => searchScreenCubit,
+        ),
+        BlocProvider<SearchScreenHistoryCubit>(
+          create: (context) => searchScreenHistoryCubit,
+        ),
+      ],
+      child: Scaffold(
+        appBar: SearchScreenAppBar(
+            onFavoritePressed: () => onFavoritePressed(),
+            title: StringResources.searchPageTitle),
+        body: Container(
+          color: Colors.white,
+          width: double.infinity,
+          height: double.infinity,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildSearchBar(),
+                BlocConsumer<SearchScreenCubit, SearchScreenState>(
+                  builder: (context, state) {
+                    if (state is SearchScreenLoadedState) {
+                      if (state.repositories.repositories.isNotEmpty) {
+                        return buildFullRepositoryState(state);
+                      } else {
+                        return buildEmptyRepositoryState(context);
+                      }
                     }
-                  }
-                  if (state is SearchScreenLoadingState) {
-                    return buildLoadingState();
-                  }
-                  if (state is SearchScreenErrorState) {
-                    return buildLoadingErrorState(context);
-                  } else {
-                    return BlocBuilder<SearchScreenHistoryCubit,
-                        SearchScreenHistoryState>(
-                      builder: (context, state) {
-                        if (state is SearchScreenHistoryLoadedState) {
-                          if (state.searchHistoryModel.history.isNotEmpty) {
-                            return buildFullSearchHistoryState(state);
+                    if (state is SearchScreenLoadingState) {
+                      return buildLoadingState();
+                    }
+                    if (state is SearchScreenErrorState) {
+                      return buildLoadingErrorState(context);
+                    } else {
+                      return BlocBuilder<SearchScreenHistoryCubit,
+                          SearchScreenHistoryState>(
+                        builder: (context, state) {
+                          if (state is SearchScreenHistoryLoadedState) {
+                            if (state.searchHistoryModel.history.isNotEmpty) {
+                              return buildFullSearchHistoryState(state);
+                            } else {
+                              return buildEmptySearchHistoryState();
+                            }
                           } else {
-                            return buildEmptySearchHistoryState();
+                            return buildSearchHistoryLoadingState();
                           }
-                        } else {
-                          return buildSearchHistoryLoadingState();
-                        }
-                      },
-                    );
-                  }
-                },
-                listener: (context, state) {
-                  if (state is SearchScreenInitialState) {
-                    searchScreenHistoryCubit.getSearchHistory();
-                  }
-                },
-              )
-            ],
+                        },
+                      );
+                    }
+                  },
+                  listener: (context, state) {
+                    if (state is SearchScreenInitialState) {
+                      searchScreenHistoryCubit.getSearchHistory();
+                    }
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -304,7 +315,7 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void onFavoritePressed() {
-    Navigator.pushNamed(context, '/favorite').then((value) {
+    Navigator.pushNamed(context, AppRoutes.favoriteScreen).then((value) {
       if (textEditingController.text.isNotEmpty) {
         searchScreenCubit.getRepositories(keyword: textEditingController.text);
       }
