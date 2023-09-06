@@ -20,7 +20,7 @@ class CardItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(CustomPadding.paddingI1),
       child: Container(
         decoration: const BoxDecoration(
             color: CustomColors.cardItemColor,
@@ -28,7 +28,8 @@ class CardItemWidget extends StatelessWidget {
         width: double.infinity,
         height: 48,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding:
+              const EdgeInsets.symmetric(horizontal: CustomPadding.paddingI2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -36,7 +37,7 @@ class CardItemWidget extends StatelessWidget {
                 child: Text(
                     overflow: TextOverflow.fade,
                     maxLines: 1,
-                    '${repository.name} [${repository.id}]',
+                    repository.name,
                     style: CustomTextStyles.cardItemTextStyle),
               ),
               GestureDetector(

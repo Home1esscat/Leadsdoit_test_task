@@ -13,7 +13,7 @@ class Bootstrap extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CustomTheme.theme,
-      initialRoute: '/',
+      initialRoute: AppRoutes.splashScreen,
       routes: {
         AppRoutes.splashScreen: (context) => const SplashScreen(),
         AppRoutes.favoriteScreen: (context) => const FavoriteScreen(),

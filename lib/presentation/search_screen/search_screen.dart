@@ -115,7 +115,11 @@ class _SearchScreenState extends State<SearchScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
+          padding: EdgeInsets.fromLTRB(
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI1,
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI2),
           child: Text(StringResources.searchHistory,
               style: CustomTextStyles.searchSubtitleStyle),
         ),
@@ -134,7 +138,11 @@ class _SearchScreenState extends State<SearchScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
+          padding: EdgeInsets.fromLTRB(
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI1,
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI2),
           child: Text(StringResources.searchHistory,
               style: CustomTextStyles.searchSubtitleStyle),
         ),
@@ -160,7 +168,11 @@ class _SearchScreenState extends State<SearchScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
+          padding: EdgeInsets.fromLTRB(
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI1,
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI2),
           child: Text(StringResources.searchHistory,
               style: CustomTextStyles.searchSubtitleStyle),
         ),
@@ -194,7 +206,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget buildLoadingState() {
     return const Center(
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(CustomPadding.paddingI2),
         child: CircularProgressIndicator(),
       ),
     );
@@ -205,7 +217,11 @@ class _SearchScreenState extends State<SearchScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
+          padding: EdgeInsets.fromLTRB(
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI1,
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI2),
           child: Text(StringResources.whatWeHaveFound,
               style: CustomTextStyles.searchSubtitleStyle),
         ),
@@ -227,7 +243,11 @@ class _SearchScreenState extends State<SearchScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
+          padding: EdgeInsets.fromLTRB(
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI1,
+              CustomPadding.paddingI2,
+              CustomPadding.paddingI2),
           child: Text(StringResources.whatWeHaveFound,
               style: CustomTextStyles.searchSubtitleStyle),
         ),
@@ -263,7 +283,11 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget buildSearchBar() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      padding: const EdgeInsets.fromLTRB(
+          CustomPadding.paddingI2,
+          CustomPadding.paddingI2,
+          CustomPadding.paddingI2,
+          CustomPadding.paddingI1),
       child: TextField(
         focusNode: focusNode,
         style: CustomTextStyles.searchTextInputStyle,

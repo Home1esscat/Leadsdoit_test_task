@@ -59,17 +59,16 @@ class SearchScreenCubit extends Cubit<SearchScreenState> {
 
   Future<bool> isRepositoryStoresAsFavorite(
       Repository repository, int index) async {
-    int exist = 0;
+    bool exist = false;
     var favoriteRepositories = await storageRepo.getFavoriteRepositories();
 
     for (var element in favoriteRepositories.repositories) {
       if (element.id == repository.id) {
-        exist = 1;
+        exist = true;
         repository.isFavorite = true;
       }
     }
-
-    return exist == 1;
+    return exist;
   }
 
   Future<void> resetState() async {

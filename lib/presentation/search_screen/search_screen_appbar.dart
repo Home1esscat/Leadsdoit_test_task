@@ -20,7 +20,7 @@ class SearchScreenAppBar extends StatelessWidget with PreferredSizeWidget {
             GestureDetector(
               onTap: onFavoritePressed,
               child: const Padding(
-                padding: EdgeInsets.only(right: 8),
+                padding: EdgeInsets.only(right: CustomPadding.paddingI1),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: DecoratedBox(
@@ -48,5 +48,5 @@ class SearchScreenAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(60.0);
+  Size get preferredSize => const Size.fromHeight(AppBarHeight.defaultHeight);
 }

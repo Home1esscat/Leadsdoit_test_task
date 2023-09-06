@@ -51,3 +51,12 @@ class CustomTextStyles {
       fontSize: 16,
       fontWeight: FontWeight.w600);
 }
+
+class CustomPadding {
+  static const double paddingI1 = 8.0;
+  static const double paddingI2 = paddingI1 * 2;
+}
+
+class AppBarHeight {
+  static const defaultHeight = 60.0;
+}
