@@ -1,16 +1,15 @@
-# github_test_app
+# Leadsdoit test task
 
-A new Flutter project.
+![MergedImages](https://github.com/Home1esscat/Leadsdoit_test_task/assets/15833765/c1e10073-4463-4b9d-b88d-9db4388dea05)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Features
+ - Output 15 search results
+ - Add ability to add repository to favorite list
+ - Add the ability to view the search history of repositories in subsequent runs of the application
+ - Add possibility to see the list of favorite repositories at subsequent runs of the application
+ - Add possibility to remove the repository from the favorites list
+ - Show previously favorited repositories in search results list
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ 
