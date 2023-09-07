@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../../common/custom_colors.dart';
 import '../../common/custom_theme.dart';
 
-class SearchScreenAppBar extends StatelessWidget with PreferredSizeWidget {
+class SearchScreenAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   const SearchScreenAppBar(
       {super.key, required this.title, required this.onFavoritePressed});
 

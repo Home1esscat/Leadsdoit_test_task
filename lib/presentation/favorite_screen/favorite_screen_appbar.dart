@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:github_test_app/common/custom_colors.dart';
 import 'package:github_test_app/common/custom_theme.dart';
 
-class FavoriteScreenAppBar extends StatelessWidget with PreferredSizeWidget {
+class FavoriteScreenAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   const FavoriteScreenAppBar(
       {super.key, required this.title, required this.onBackPressed});
 
